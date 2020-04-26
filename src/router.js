@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home';
 import App from './views/App';
 import Technician from './views/Technician';
+import Researcher from './views/Researcher';
 
 Vue.use(Router);
 
@@ -33,6 +34,11 @@ export default new Router({
 					path: 'technician',
 					name: 'technician',
 					component: Technician,
+				},
+				{
+					path: 'researcher',
+					name: 'researcher',
+					component: Researcher,
 				},
 			],
 		},
