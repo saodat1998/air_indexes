@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home';
+import App from './views/App';
+import Technician from './views/Technician';
 
 Vue.use(Router);
 
@@ -9,9 +11,30 @@ export default new Router({
 	base: process.env.BASE_URL,
 	routes: [
 		{
-			path: '/',
+			path: '',
 			name: 'home',
 			component: Home,
+		},
+		// {
+		// 	path: 'app',
+		// 	name: 'app',
+		// 	component: App,
+		// },
+		// {
+		// 	path: '/app/technician',
+		// 	name: 'technician',
+		// 	component: Technician,
+		// },
+		{
+			path: '/app/',
+			component: App,
+			children: [
+				{
+					path: 'technician',
+					name: 'technician',
+					component: Technician,
+				},
+			],
 		},
 	],
 });

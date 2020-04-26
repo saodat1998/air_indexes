@@ -8,16 +8,25 @@ export default new Vuex.Store({
 		apiUrl: '#',
 		message: '',
 		color: '',
+		barColor: 'rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)',
+		barImage: require('@/assets/banner-01.jpg'),
+		drawer: null,
 	},
 	getters: {
-		authorized: state => state.authorized,
-		apiUrl: state => {
+		authorized: (state) => state.authorized,
+		apiUrl: (state) => {
 			return state.apiUrl;
 		},
-		message: state => state.message,
-		color: state => state.color,
+		message: (state) => state.message,
+		color: (state) => state.color,
 	},
 	mutations: {
+		SET_BAR_IMAGE(state, payload) {
+			state.barImage = payload;
+		},
+		SET_DRAWER(state, payload) {
+			state.drawer = payload;
+		},
 		authorized(state, authorized) {
 			state.authorized = authorized;
 		},

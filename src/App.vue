@@ -1,17 +1,17 @@
 <template>
-  <v-app>
-    <ToolbarWidget />
+  <div>
+    <!-- <ToolbarWidget /> -->
     <!-- <language-switcher></language-switcher> -->
     <!-- <v-container> -->
       <router-view />
      <!-- </v-container> -->
     <snackbar-message v-model="$store.getters.message" :color="$store.getters.color"></snackbar-message>
-  </v-app>
+  </div>
 </template>
 
 <script>
 // import TopNav from "@/components/navigation/TopNav";
-import ToolbarWidget from "@/components/widget/ToolbarWidget";
+// import ToolbarWidget from "@/components/widget/ToolbarWidget";
 import SnackbarMessage from "@/components/snackbar/SnackbarMessage";
 // import LanguageSwitcher from "@/components/widget/LanguageSwitcher";
 
@@ -20,7 +20,7 @@ export default {
   components: {
     SnackbarMessage,
     // LanguageSwitcher,
-    ToolbarWidget
+    // ToolbarWidget
   },
   beforeMount() {
     
