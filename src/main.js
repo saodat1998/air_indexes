@@ -10,6 +10,7 @@ import SnackbarMessage from './components/snackbar/SnackbarMessage';
 import VueI18n from 'vue-i18n';
 import i18n from './i18n';
 import vuetify from './plugins/vuetify';
+import vueScrollto from 'vue-scrollto';
 
 Vue.use(mixins);
 Vue.use(SnackbarMessage);
@@ -37,6 +38,7 @@ Vue.http.headers.common['Authorization'] = basicAuth;
 // Vue.http.headers.common['device-id'] = store.getters.deviceId;
 // Vue.http.headers.common['lang'] = store.getters.apiLocale;
 Vue.http.options.root = store.getters.apiUrl;
+Vue.use(vueScrollto);
 new Vue({
 	router,
 	store,

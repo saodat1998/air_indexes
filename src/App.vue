@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <v-app>
     <!-- <ToolbarWidget /> -->
     <!-- <language-switcher></language-switcher> -->
     <!-- <v-container> -->
       <router-view />
      <!-- </v-container> -->
     <snackbar-message v-model="$store.getters.message" :color="$store.getters.color"></snackbar-message>
-  </div>
+  </v-app>
 </template>
 
 <script>
