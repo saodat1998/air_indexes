@@ -1,9 +1,9 @@
 <template>
     <div :class="{ fixed: isFixed }">
-        <v-app-bar class="navbar fixed elevation-0" color="transparent" height="90" dense>
+        <v-app-bar class="navbar fixed elevation-0" color="transparent" height="80" dense>
             <div>
                 <router-link :to="{ name: 'home' }">
-                    <v-img class="mx-10 my-2" src="@/assets/logo.png" width="110" height="81">
+                    <v-img class="mx-10 my-2" src="@/assets/logo.png" width="30%" height="30%">
                     </v-img>
                 </router-link>
             </div>

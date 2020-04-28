@@ -2,7 +2,7 @@
 	<div class="banner">
 		<v-container>
 			<v-row align="center" class="main">
-				<v-col align="center">
+				<v-col align="center" class="main-text">
 				<h1 class="my-10 display-3 font-weight-bold">Welcome to Air Indexer</h1>
 				<p class="my-10 display-1">Lorem ipsum dolor sit amet AIR INDEXER VALUES</p>
 				<v-btn rounded class="ma-2 started">Get started</v-btn>
@@ -31,6 +31,7 @@ p{
 		background-image: url('~@/assets/banner-01.jpg');
 		-webkit-background-size: cover;
 		background-size: cover;
+		background-position: center;
 		color: white;
 		height: 100%;
 		width: 100%;
@@ -104,5 +105,8 @@ h1 {
   display: inline-block;
   position: relative;
   text-align: left;
+}
+.main-text{
+	z-index: 2;
 }
 </style>
