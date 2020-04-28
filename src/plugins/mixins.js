@@ -26,7 +26,7 @@ const globalHandler = {
 						.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				},
 				successMessage(response) {
-					this.$store.commit('successMessage', response.data.data.message);
+					this.$store.commit('successMessage', response.data.message);
 				},
 				infoMessage(message) {
 					this.$store.commit('infoMessage', message);

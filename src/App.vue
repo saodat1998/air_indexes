@@ -3,8 +3,8 @@
     <!-- <ToolbarWidget /> -->
     <!-- <language-switcher></language-switcher> -->
     <!-- <v-container> -->
-      <router-view />
-     <!-- </v-container> -->
+    <router-view />
+    <!-- </v-container> -->
     <snackbar-message v-model="$store.getters.message" :color="$store.getters.color"></snackbar-message>
   </v-app>
 </template>
@@ -18,24 +18,26 @@ import SnackbarMessage from "@/components/snackbar/SnackbarMessage";
 export default {
   name: "app",
   components: {
-    SnackbarMessage,
+    SnackbarMessage
     // LanguageSwitcher,
     // ToolbarWidget
-  },
-  beforeMount() {
-    
   },
   computed: {
     theme() {
       return this.$vuetify.theme.dark ? "dark" : "light";
-    },
-    
+    }
   },
-  methods: {
-   
-  },
-  mounted() {
-   
+  methods: {},
+  mounted() {},
+  beforeMount() {
+    let self = this;
+    let token = window.localStorage.getItem("token");
+    if (!token) {
+      self.$store.commit("authorized", false);
+      if (this.$route.name != "login") self.redirect("login");
+    } else if (!self.$store.getters.token) {
+      self.$store.commit("token", token);
+    }
   }
 };
 </script>

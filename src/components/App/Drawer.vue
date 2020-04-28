@@ -87,7 +87,7 @@ export default {
         to: "/app/researcher"
       },
       {
-        title: "Statistics Generator",
+        title: "Statistics Collector",
         icon: "mdi-chart-bubble",
         to: "/app/statistics-generator"
       },

@@ -3,27 +3,27 @@
     <v-card class="pa-5">
       <v-data-table :headers="headers" :items="values" :loading="isLoading">
         <template v-slot:item.edit="{ item }">
-          <router-link :to="{ name: `researcherEdit`, params: { item: item, id: item.id } }">
+          <router-link :to="{ name: `statisticsEdit`, params: { item: item, id: item.id } }">
             <v-btn color="primary" dark fab small>
               <v-icon>mdi-lead-pencil</v-icon>
             </v-btn>
           </router-link>
         </template>
         <template v-slot:item.status="{ item }">
-            <v-btn v-if="item.status == '1'" color="purple" dark rounded small>
-              waiting..
-            </v-btn>
-            <v-btn v-if="item.status == '2'" color="green" dark rounded small>
-              Completed
-            </v-btn>
+          <v-btn v-if="item.status == '1'" color="purple" dark rounded small>waiting..</v-btn>
+          <v-btn
+            @click="statusChange(item.id, 1, item.value)"
+            v-if="item.status == '2'"
+            color="green"
+            dark
+            rounded
+            small
+          >Completed</v-btn>
         </template>
         <template v-slot:item.delete="{ item }">
           <v-btn @click="handleDelete(item.id)" color="pink" dark fab small>
             <v-icon>mdi-delete</v-icon>
           </v-btn>
-        </template>
-        <template v-slot:item.date="{ item }">
-          {{item.researcher_value_model ? item.researcher_value_model.date : ""}}
         </template>
       </v-data-table>
     </v-card>
@@ -34,17 +34,16 @@ export default {
   data() {
     return {
       headers: [
-        { text: "Region ID", value: "region_id" },
+        { text: "Region", value: "region_name" },
         {
-          text: "Name",
+          text: "Date",
           align: "left",
           sortable: false,
-          value: "region_name"
+          value: "date"
         },
-        { text: "Technician Value", value: "value" },
+        { text: "Researcher Value", value: "value" },
         { text: "Status", value: "status" },
-        { text: "Researcher Value", value: "researcher_value" },
-        { text: "Date", value: "date" },
+        { text: "Statistic Value", value: "statistic_value" },
         { text: "Edit", value: "edit" },
         { text: "Delete", value: "delete" }
       ],
@@ -55,10 +54,23 @@ export default {
     };
   },
   methods: {
+    statusChange(id, val, value) {
+      self.isLoading = true;
+      this.$http
+        .post(`research-values/update/${id}`, {status: val, value: value})
+        .then(response => {
+          this.successMessage(response);
+          this.getValues();
+          self.isLoading = false;
+        })
+        .catch(() => {
+          self.isLoading = false;
+        });
+    },
     getValues() {
       let self = this;
       self.isLoading = true;
-      self.$http.get(`technical-values`).then(response => {
+      self.$http.get(`research-values`).then(response => {
         console.log(response);
         self.values = response.data.data;
         // self.fields.forEach((item, key) => {
@@ -70,14 +82,14 @@ export default {
     handleDelete(id) {
       self.isLoading = true;
       this.$http
-        .post(`technical-values/delete/${id}`)
+        .post(`research-values/delete/${id}`)
         .then(response => {
           this.successMessage(response);
+          this.getValues();
           self.isLoading = false;
         })
-        .catch(response => {
+        .catch(() => {
           self.isLoading = false;
-          console.log(response);
         });
     },
     getRegions() {

@@ -5,15 +5,17 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		authorized: false,
-		apiUrl: '#',
+		apiUrl: 'https://aqi-api.sadirbaeva.uz/api/v1/',
 		message: '',
 		color: '',
+		token: '',
 		barColor: 'rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)',
 		barImage: require('@/assets/banner-01.jpg'),
 		drawer: null,
 	},
 	getters: {
 		authorized: (state) => state.authorized,
+		token: (state) => state.token,
 		apiUrl: (state) => {
 			return state.apiUrl;
 		},
@@ -21,6 +23,17 @@ export default new Vuex.Store({
 		color: (state) => state.color,
 	},
 	mutations: {
+		token(state, token) {
+			state.token = token;
+			Vue.http.headers.common['Authorization'] = "Bearer "+token;
+			if (token) {
+				state.authorized = true;
+				window.localStorage.setItem('token', token);
+			} else {
+				state.authorized = false;
+				window.localStorage.removeItem('token');
+			}
+		},
 		SET_BAR_IMAGE(state, payload) {
 			state.barImage = payload;
 		},

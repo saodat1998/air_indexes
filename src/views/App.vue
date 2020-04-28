@@ -14,7 +14,11 @@ export default {
   name: "Home",
 
   components: { AppBar, Drawer, Rout },
-  
+  mounted(){
+    if(!window.localStorage.getItem('token')){
+      this.redirect("login")
+    }
+  }
 };
 </script>
 <style lang="scss">
