@@ -96,11 +96,11 @@ export default {
         icon: "mdi-map-marker",
         to: "/app/regions"
       },
-      {
-        title: "Notifications",
-        icon: "mdi-bell",
-        to: "/app/notifications"
-      }
+      // {
+      //   title: "Notifications",
+      //   icon: "mdi-bell",
+      //   to: "/app/notifications"
+      // }
     ]
   }),
   computed: {

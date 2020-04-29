@@ -34,7 +34,7 @@ export default {
     let token = window.localStorage.getItem("token");
     if (!token) {
       self.$store.commit("authorized", false);
-      if (this.$route.name != "login") self.redirect("login");
+      if (this.$route.name != "login" && this.$route.name != "home") self.redirect("login");
     } else if (!self.$store.getters.token) {
       self.$store.commit("token", token);
     }

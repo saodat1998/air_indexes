@@ -41,6 +41,7 @@ export default {
           sortable: false,
           value: "date"
         },
+        { text: "Technician Value", value: "technical_value" },
         { text: "Researcher Value", value: "value" },
         { text: "Status", value: "status" },
         { text: "Statistic Value", value: "statistic_value" },

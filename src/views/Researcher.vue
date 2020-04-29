@@ -10,20 +10,24 @@
           </router-link>
         </template>
         <template v-slot:item.status="{ item }">
-            <v-btn v-if="item.status == '1'" color="purple" dark rounded small>
-              waiting..
-            </v-btn>
-            <v-btn v-if="item.status == '2'" color="green" dark rounded small>
-              Completed
-            </v-btn>
+          <v-btn v-if="item.status == '1'" color="purple" dark rounded small>waiting..</v-btn>
+          <v-btn v-if="item.status == '2'" color="green" dark rounded small>Completed</v-btn>
         </template>
         <template v-slot:item.delete="{ item }">
           <v-btn @click="handleDelete(item.id)" color="pink" dark fab small>
             <v-icon>mdi-delete</v-icon>
           </v-btn>
         </template>
-        <template v-slot:item.date="{ item }">
-          {{item.researcher_value_model ? item.researcher_value_model.date : ""}}
+        <template
+          v-slot:item.date="{ item }"
+        >{{item.researcher_value_model ? item.researcher_value_model.date : ""}}</template>
+        <template v-slot:item.value="{ item }">
+          <v-btn
+            :color="quality.aqi_category.color"
+            v-for="(quality,key) in item.qualities"
+            :key="key"
+          >{{quality.value}} - {{quality.aqi_category_name}} - {{quality.aqi_index}}</v-btn>
+          <br />
         </template>
       </v-data-table>
     </v-card>

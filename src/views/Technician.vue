@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <v-card class="pa-5 ma-3 elevation-5">
+      <h3 class="error-text text-center">{{error}}</h3>
       <v-form @submit.prevent="handleSubmit" method="post" ref="form">
         <v-row justify="center">
           <v-col cols="12" md="6">
@@ -72,7 +73,8 @@ export default {
       fields: [],
       values: [],
       isLoading: false,
-      menu2: false
+      menu2: false,
+      error: "",
     };
   },
   methods: {
@@ -109,6 +111,7 @@ export default {
     },
     handleSubmit() {
       // let formData = new FormData();
+      this.isLoading = true;
       let region_id = this.regions.find(item => item.name == this.region).id;
       let qualities = {};
       this.fields.forEach(item => {
@@ -129,9 +132,11 @@ export default {
         .then(response => {
           this.$router.push({ name: "researcher" });
           this.successMessage(response);
+          this.isLoading = false;
         })
         .catch(response => {
-          console.log(response);
+          this.error = response.data.message;
+          this.isLoading = false;
         });
     }
   },

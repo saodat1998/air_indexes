@@ -7,11 +7,15 @@
           <h3>Region Population: {{fields.region.population}}</h3>
           <h3>Region capital: {{fields.region.capital}}</h3>
           <h3>Region Area: {{fields.region.area_km}}</h3>
-          <h4 v-for="item in fields.qualities" :key="item.id">
-            {{item.pollutant_name}} :
-            {{item.value}}
-          </h4>
           <h3>Value: {{fields.value}}</h3>
+
+          <v-btn
+          block
+            :color="quality.aqi_category.color"
+            v-for="(quality,key) in fields.qualities"
+            :key="key"
+          >{{quality.pollutant_name}} - {{quality.value}} - {{quality.aqi_category_name}} - {{quality.aqi_index}}</v-btn>
+          <br />
         </v-col>
         <v-col cols="12" md="6">
           <v-form @submit.prevent="handleSubmit" method="post" ref="form">

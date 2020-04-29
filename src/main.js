@@ -10,10 +10,12 @@ import SnackbarMessage from './components/snackbar/SnackbarMessage';
 import VueI18n from 'vue-i18n';
 import vuetify from './plugins/vuetify';
 import vueScrollto from 'vue-scrollto';
+import VueTyperPlugin from 'vue-typer'
 
 Vue.use(mixins);
 Vue.use(SnackbarMessage);
 Vue.use(VueResource);
+Vue.use(VueTyperPlugin)
 
 Vue.use(VueI18n);
 

@@ -8,26 +8,15 @@
                 </router-link>
             </div>
             <v-spacer></v-spacer>
-            <v-toolbar-items class="hidden-sm-and-down">
+            <v-toolbar-items>
                 <li>
                     <a @click="handleClick" class="nav" v-scroll-to="'#banner'" href="#">Home</a>
                     <a class="nav" @click="handleClick" v-scroll-to="'#about'" href="#">About Us</a>
                     <a class="nav" @click="handleClick" v-scroll-to="'#services'" href="#">Services</a>
                     <a class="nav" @click="handleClick" v-scroll-to="'#ranking'" href="#">Ranking</a>
-                    <a class="nav" @click="handleClick" v-scroll-to="'#technology'" href="#">Technology</a>
                     <router-link :to="{ name: 'login' }">Login in</router-link>
                 </li>
             </v-toolbar-items>
-            <v-menu class="hidden-md-and-up">
-                <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
-                <v-list>
-                    <v-list-tile v-for="item in menu" :key="item.icon">
-                        <v-list-tile-content>
-                            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                </v-list>
-            </v-menu>
         </v-app-bar>
     </div>
 </template>

@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      self.isLoading = true;
+      this.isLoading = true;
       this.$http
         .post("statistic-values/create", {
           research_value_id: this.fields.id,
@@ -54,10 +54,10 @@ export default {
         .then(response => {
           this.successMessage(response);
           this.$router.push({ name: "statistics" });
-          self.isLoading = false;
+          this.isLoading = false;
         })
         .catch(response => {
-          self.isLoading = false;
+          this.isLoading = false;
           console.log(response);
         });
     }
